@@ -7,9 +7,12 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
+
 import {useTheme} from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
@@ -51,17 +54,17 @@ const EditProfileScreen = ({navigation}) => {
     <View style={styles.panel}>
       <View style={{alignItems: 'center'}}>
         <Text style={styles.panelTitle}>Upload Photo</Text>
-        <Text style={styles.panelSubtitle}>Profile Picture</Text>
+        <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
       </View>
       <TouchableOpacity style={styles.panelButton} onPress={takePhotoFromCamera}>
         <Text style={styles.panelButtonTitle}>Take Photo</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
-        <Text style={styles.panelButtonTitle}>Use Existing</Text>
+        <Text style={styles.panelButtonTitle}>Choose From Library</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.panelButton}
-        onPress={() => bs.current.snapTo(1)}>
+        onPress={() => this.bs.current.snapTo(1)}>
         <Text style={styles.panelButtonTitle}>Cancel</Text>
       </TouchableOpacity>
     </View>
@@ -132,12 +135,12 @@ const EditProfileScreen = ({navigation}) => {
             </View>
           </TouchableOpacity>
           <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
-              Enter your Details here
+            Enter you details
           </Text>
         </View>
 
         <View style={styles.action}>
-          
+          <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
             placeholder="First Name"
             placeholderTextColor="#666666"
@@ -151,7 +154,7 @@ const EditProfileScreen = ({navigation}) => {
           />
         </View>
         <View style={styles.action}>
-         
+          <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
             placeholder="Last Name"
             placeholderTextColor="#666666"
@@ -165,6 +168,7 @@ const EditProfileScreen = ({navigation}) => {
           />
         </View>
         <View style={styles.action}>
+          <Feather name="phone" color={colors.text} size={20} />
           <TextInput
             placeholder="Phone"
             placeholderTextColor="#666666"
@@ -179,6 +183,7 @@ const EditProfileScreen = ({navigation}) => {
           />
         </View>
         <View style={styles.action}>
+          <FontAwesome name="envelope-o" color={colors.text} size={20} />
           <TextInput
             placeholder="Email"
             placeholderTextColor="#666666"
@@ -196,7 +201,7 @@ const EditProfileScreen = ({navigation}) => {
           <Text style={styles.panelButtonTitle}>Submit</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.commandButton} onPress={() =>navigation.navigate('agecalculator')}>
-          <Text style={styles.panelButtonTitle}>Calculate your age</Text>
+          <Text style={styles.panelButtonTitle}>Calculate your Age</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>

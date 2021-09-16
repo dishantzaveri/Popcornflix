@@ -11,7 +11,8 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 
 import { useTheme } from 'react-native-paper';
 import Users from '../model/users';
@@ -124,7 +125,11 @@ const LogInScreen = ({navigation}) => {
                 color: colors.text
             }]}>Username</Text>
             <View style={styles.action}>
-                
+                <FontAwesome 
+                    name="user-o"
+                    color={colors.text}
+                    size={20}
+                />
                 <TextInput 
                     placeholder="Your Username"
                     placeholderTextColor="#F06292"
@@ -139,7 +144,11 @@ const LogInScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    
+                    <Feather 
+                        name="check-circle"
+                        color="green"
+                        size={20}
+                    />
                 </Animatable.View>
                 : null}
             </View>
@@ -155,6 +164,11 @@ const LogInScreen = ({navigation}) => {
                 marginTop: 35
             }]}>Password</Text>
             <View style={styles.action}>
+                <Feather 
+                    name="lock"
+                    color={colors.text}
+                    size={20}
+                />
                 <TextInput 
                     placeholder="Your Password"
                     placeholderTextColor="#F06292"
@@ -165,7 +179,23 @@ const LogInScreen = ({navigation}) => {
                     autoCapitalize="none"
                     onChangeText={(val) => handlePasswordChange(val)}
                 />
-                
+                <TouchableOpacity
+                    onPress={updateSecureTextEntry}
+                >
+                    {data.secureTextEntry ? 
+                    <Feather 
+                        name="eye-off"
+                        color="grey"
+                        size={30}
+                    />
+                    :
+                    <Feather 
+                        name="eye"
+                        color="grey"
+                        size={30}
+                    />
+                    }
+                </TouchableOpacity>
             </View>
             { data.isValidPassword ? null : 
             <Animatable.View animation="zoomOut" duration={3000}>
@@ -242,7 +272,7 @@ const styles = StyleSheet.create({
         paddingBottom: 50
     },
     footer: {
-        flex: 5,
+        flex: 3,
         backgroundColor: '#209300',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
@@ -284,11 +314,11 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        marginTop: 50
+        marginTop: 25
     },
     logIn: {
         width: '100%',
-        height: 35,
+        height: 40,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10

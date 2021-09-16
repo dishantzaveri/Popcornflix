@@ -83,7 +83,7 @@ export default function SignInScreen({ navigation }) {
       </Button>
       <View style={styles.row}>
         <Text>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace('LogInScreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('LogInScreen')}>
           <Text style={styles.link}>Login</Text>
         </TouchableOpacity>
       </View>
