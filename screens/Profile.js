@@ -19,7 +19,7 @@ import Animated from 'react-native-reanimated';
 
 import ImagePicker from 'react-native-image-crop-picker';
 
-const EditProfileScreen = ({navigation}) => {
+const Profile = ({navigation}) => {
 
   const [image, setImage] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUncw5PB5syw9BIoymTrwyOjAqRlTZC1Rkew&usqp=CAU');
   const {colors} = useTheme();
@@ -208,7 +208,7 @@ const EditProfileScreen = ({navigation}) => {
   );
 };
 
-export default EditProfileScreen;
+export default Profile;
 
 const styles = StyleSheet.create({
   container: {

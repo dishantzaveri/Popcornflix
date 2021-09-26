@@ -7,7 +7,8 @@ import {
     Platform,
     StyleSheet ,
     StatusBar,
-    Alert
+    Alert,
+    Image
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
@@ -113,7 +114,11 @@ const LogInScreen = ({navigation}) => {
       <View style={styles.container}>
           <StatusBar backgroundColor='#009387' barStyle="light-content"/>
         <View style={styles.header}>
-            <Text style={styles.text_header}>Welcome, your profile awaits you!</Text>
+            <Text style={styles.text_header}>Welcome to POPCORNFLIX</Text>
+            <Image
+          source={{uri : 'https://image.winudf.com/v2/image1/Y29tLmN1cmlvdXNicmFpbi5wb3Bjb3JuZmxpeF9pY29uXzE2Mjg1MjQyNTRfMDgx/icon.png?w=&fakeurl=1'}}
+          style={{ width: 100, height: 100, borderRadius: 30,}}
+        />
         </View>
         <Animatable.View 
             animation="fadeInUpBig"
@@ -218,12 +223,12 @@ const LogInScreen = ({navigation}) => {
                 >
                     <Text style={[styles.textSign, {
                         color:'#000000'
-                    }]}>Log in</Text>
+                    }]}>Validate</Text>
                 </LinearGradient>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('SignInScreen')}
+                    onPress={() => navigation.navigate('SignUpScreen')}
                     style={[styles.logIn, {
                         borderColor: '#009387',
                         borderWidth: 1,
@@ -240,7 +245,7 @@ const LogInScreen = ({navigation}) => {
                         borderWidth: 1,
                         marginTop: 15
                     }]}
-                    onPress={() =>  navigation.navigate('Profile')}
+                    onPress={() =>  navigation.navigate('tabs')}
                 >
                 <LinearGradient
                     colors={['#08d4c4', '#01ab9d']}
@@ -248,7 +253,7 @@ const LogInScreen = ({navigation}) => {
                 >
                     <Text style={[styles.textSign, {
                         color:'#000000'
-                    }]}>Profile</Text>
+                    }]}>log in</Text>
                 </LinearGradient>
                 </TouchableOpacity>
 
@@ -269,7 +274,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         paddingHorizontal: 20,
-        paddingBottom: 50
+        paddingBottom: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     footer: {
         flex: 3,
@@ -282,7 +289,8 @@ const styles = StyleSheet.create({
     text_header: {
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
+       
     },
     text_footer: {
         color: '#05375a',
