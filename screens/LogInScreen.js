@@ -290,6 +290,9 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 30,
+        alignContent: 'center',
+        justifyContent: 'center',
+        textAlign:"center"
        
     },
     text_footer: {

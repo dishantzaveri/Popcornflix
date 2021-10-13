@@ -7,6 +7,8 @@ import SignUpScreen from './screens/SignUpScreen';
 import Profile from './screens/Profile';
 import agecalculator from './screens/agecalculator';
 import tabs from './navigation/tabs';
+import moviedetail from './navigation/moviedetail'
+
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -30,7 +32,10 @@ export default function App() {
             <Stack.Screen name='Profile' component={Profile} options={{
             headerShown: false,
           }}  />
-            
+         <Stack.Screen name='moviedetail' component={moviedetail}
+         options={{
+          headerShown: false, 
+        }}  />
      
       </Stack.Navigator>
     </NavigationContainer>

@@ -16,6 +16,7 @@ target 'Task1LP' do
 
   pod 'react-native-viewpager', :path => '../node_modules/@react-native-community/viewpager'
 
+
   target 'Task1LPTests' do
     inherit! :complete
     # Pods for testing

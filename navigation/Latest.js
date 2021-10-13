@@ -6,10 +6,12 @@ import {
   View,
   StyleSheet,
   ImageBackground,
+  Alert,
 } from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-export default getLatestMovies = () => {
+export default getLatestMovies = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -30,7 +32,6 @@ export default getLatestMovies = () => {
   useEffect(() => {
     getLatestMovies();
   }, []);
-
   return (
     <View style={styles.container}>
       {isLoading ? (
@@ -44,20 +45,27 @@ export default getLatestMovies = () => {
             <View style={styles.item}>
               <Text
                 style={{
-                  fontSize: 30,
-                  fontWeight: "bold",
+                  fontSize: 25,
+                  fontWeight: 'bold',
                   textAlign: 'center',
-                  color: 'white',
+                  color:'yellow',
+                  fontStyle: 'italic',
                 }}>
                 {item.title}
               </Text>
               <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <ImageBackground resizeMode="cover"
-                  source={{
-                    uri:
-                      'https://image.tmdb.org/t/p/original/' + item.poster_path,
-                  }}
-                  style={styles.image}></ImageBackground>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('moviedetail', {movie: item})
+                  }>
+                  <ImageBackground
+                    source={{
+                      uri:
+                        'https://image.tmdb.org/t/p/original/' +
+                        item.poster_path,
+                    }}
+                    style={styles.image}></ImageBackground>
+                </TouchableOpacity>
               </View>
               <Text
                 style={{
@@ -77,35 +85,55 @@ export default getLatestMovies = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                 }}>
-                <FontAwesome5 name={'heartbeat'} size={30} color={'red'} />
+                <FontAwesome5
+                  name={'heartbeat'}
+                  size={30}
+                  color={'red'}
+                  onPress={() =>
+                    Alert.alert(
+                      'Thrilled you!',
+                      'Go and check your heartbeat',
+                      [{text: 'Okay'}],
+                    )
+                  }
+                />
                 <FontAwesome5
                   name={'hand-holding-heart'}
                   size={30}
                   color={'red'}
+                  onPress={() =>
+                    Alert.alert(
+                      'Stole your heart!',
+                      'Keep binging again anad again.',
+                      [{text: 'Okay'}],
+                    )
+                  }
                 />
-                <FontAwesome5 name={'grin-hearts'} size={30} color={'red'} />
-                <FontAwesome5 name={'heart-broken'} size={30} color={'red'} />
+                <FontAwesome5
+                  name={'grin-hearts'}
+                  size={30}
+                  color={'red'}
+                  onPress={() =>
+                    Alert.alert(
+                      'Woah!',
+                      'Amazed you',
+                      [{text: 'Okay'}],
+                    )
+                  }
+                />
+                <FontAwesome5
+                  name={'heart-broken'}
+                  size={30}
+                  color={'red'}
+                  onPress={() =>
+                    Alert.alert(
+                      'Bored you!',
+                      'Added to disliked list',
+                      [{text: 'Okay'}],
+                    )
+                  }
+                />
               </View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '700',
-                  opacity: 0.8,
-                  color: '#0099cc',
-                  textAlign: 'center',
-                }}>
-                Popularity ~ {item.popularity}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 13,
-                  fontWeight: '300',
-                  opacity: 0.8,
-                  color: 'yellow',
-                  textAlign: 'center',
-                }}>
-                {item.overview}
-              </Text>
             </View>
           )}
         />
@@ -127,9 +155,9 @@ const styles = StyleSheet.create({
   },
   item: {
     flexBasis: '50%',
-    marginHorizontal: 10,
-    marginTop: 10,
-    padding: 5,
+    marginHorizontal: 20,
+    marginTop: 5,
+    padding: 0,
     backgroundColor: 'black',
   },
 });
