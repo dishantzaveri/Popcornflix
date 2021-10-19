@@ -10,10 +10,11 @@ import TopBarNavigator from './TopTabScreen';
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const Tabs = ({route}) => {
+  const email=route.params.text
   return(
     <Tab.Navigator
-      initialRouteName="Movies"
+      initialRouteName="Profile"
       activeColor="#fff"
     >
       <Tab.Screen
@@ -53,6 +54,7 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
+       initialParams={{text: email}}
         name="Profile"
         component={Profile}
         options={{

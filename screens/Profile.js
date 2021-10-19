@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
   View,
   Text,
@@ -15,40 +15,46 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
 import BottomSheet from 'reanimated-bottom-sheet';
-import Animated from 'react-native-reanimated';
+import Animated, { Value } from 'react-native-reanimated';
 
 import ImagePicker from 'react-native-image-crop-picker';
+import {AuthContext} from '../navigation/AuthProvider.android.js';
 
-const Profile = ({navigation}) => {
 
-  const [image, setImage] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUncw5PB5syw9BIoymTrwyOjAqRlTZC1Rkew&usqp=CAU');
+const Profile = ({navigation,route}) => {
+  const [image, setImage] = useState(
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUncw5PB5syw9BIoymTrwyOjAqRlTZC1Rkew&usqp=CAU',
+  );
   const {colors} = useTheme();
+  const {user, logout} = useContext(AuthContext);
+  const email=route.params.text
+  
 
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       compressImageMaxWidth: 300,
       compressImageMaxHeight: 300,
       cropping: true,
-      compressImageQuality: 0.7
+      compressImageQuality: 0.7,
     }).then(image => {
       console.log(image);
       setImage(image.path);
       bs.current.snapTo(1);
     });
-  }
+  };
 
   const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
       width: 300,
       height: 300,
       cropping: true,
-      compressImageQuality: 0.7
+      compressImageQuality: 0.7,
     }).then(image => {
       console.log(image);
       setImage(image.path);
       bs.current.snapTo(1);
     });
-  }
+  };
 
   renderInner = () => (
     <View style={styles.panel}>
@@ -56,10 +62,14 @@ const Profile = ({navigation}) => {
         <Text style={styles.panelTitle}>Upload Photo</Text>
         <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
       </View>
-      <TouchableOpacity style={styles.panelButton} onPress={takePhotoFromCamera}>
+      <TouchableOpacity
+        style={styles.panelButton}
+        onPress={takePhotoFromCamera}>
         <Text style={styles.panelButtonTitle}>Take Photo</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
+      <TouchableOpacity
+        style={styles.panelButton}
+        onPress={choosePhotoFromLibrary}>
         <Text style={styles.panelButtonTitle}>Choose From Library</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -92,9 +102,11 @@ const Profile = ({navigation}) => {
         callbackNode={fall}
         enabledGestureInteraction={true}
       />
-      <Animated.View style={{margin: 20,
-        opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
-    }}>
+      <Animated.View
+        style={{
+          margin: 20,
+          opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
+        }}>
         <View style={{alignItems: 'center'}}>
           <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
             <View
@@ -135,7 +147,7 @@ const Profile = ({navigation}) => {
             </View>
           </TouchableOpacity>
           <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
-            Enter you details
+          Welcome {email}
           </Text>
         </View>
 
@@ -194,14 +206,20 @@ const Profile = ({navigation}) => {
               {
                 color: colors.text,
               },
+             
             ]}
           />
         </View>
-        <TouchableOpacity style={styles.commandButton} onPress={() =>{}}>
+        <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
           <Text style={styles.panelButtonTitle}>Submit</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.commandButton} onPress={() =>navigation.navigate('agecalculator')}>
+        <TouchableOpacity
+          style={styles.commandButton}
+          onPress={() => navigation.navigate('agecalculator')}>
           <Text style={styles.panelButtonTitle}>Calculate your Age</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.commandButton} onPress={() => logout()}>
+          <Text style={styles.panelButtonTitle}>Logout</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
@@ -215,7 +233,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   commandButton: {
-    padding: 15,
+    padding: 8,
     borderRadius: 10,
     backgroundColor: '#FF6347',
     alignItems: 'center',
@@ -292,8 +310,32 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    marginTop: Platform.OS === "android" ? 0 : -12,
+    marginTop: Platform.OS === 'android' ? 0 : -12,
     paddingLeft: 10,
     color: '#05375a',
+  },
+  button: {
+    backgroundColor: '#0782F9',
+    width: '60%',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+  userBtn: {
+    borderColor: '#2e64e5',
+    borderWidth: 2,
+    borderRadius: 3,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginHorizontal: 5,
+  },
+  userBtnTxt: {
+    color: '#2e64e5',
   },
 });
