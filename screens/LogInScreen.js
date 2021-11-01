@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import Background from '../components/Background';
@@ -22,7 +22,7 @@ export default function LogInScreen({navigation}) {
     const nameError = nameValidator(name);
     const emailError = emailValidator(email);
     const passwordError = passwordValidator(password);
-    if (passwordError || emailError  || nameError) {
+    if (passwordError || emailError || nameError) {
       setName({...name, error: nameError});
       setEmail({...email, error: emailError});
       setPassword({...password, error: passwordError});
@@ -40,7 +40,6 @@ export default function LogInScreen({navigation}) {
         onChangeText={text => setName(text)}
         error={!!name.error}
         errorText={name.error}
-    
       />
       <TextInput
         label="Email"
@@ -53,7 +52,6 @@ export default function LogInScreen({navigation}) {
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
-       
       />
       <TextInput
         label="Password"
@@ -62,7 +60,7 @@ export default function LogInScreen({navigation}) {
         onChangeText={text => setPassword(text)}
         error={!!password.error}
         errorText={password.error}
-        secureTextEntry ={true}
+        secureTextEntry={true}
         autoCapitalize="none"
         autoCompleteType="password"
         keyboardType="default"

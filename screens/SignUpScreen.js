@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import Background from '../components/Background';
@@ -18,7 +18,6 @@ export default function SignUpScreen({navigation}) {
   const [email, setEmail] = useState({value: '', error: ''});
   const [password, setPassword] = useState({value: '', error: ''});
   const {register, googleLogin, fbLogin} = useContext(AuthContext);
-  
 
   const onSignUpPressed = () => {
     const nameError = nameValidator(name);
@@ -47,7 +46,6 @@ export default function SignUpScreen({navigation}) {
         onChangeText={text => setName(text)}
         error={!!name.error}
         errorText={name.error}
-        
       />
 
       <TextInput
@@ -61,7 +59,6 @@ export default function SignUpScreen({navigation}) {
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
-    
       />
       <TextInput
         label="Password"
@@ -70,7 +67,7 @@ export default function SignUpScreen({navigation}) {
         onChangeText={text => setPassword(text)}
         error={!!password.error}
         errorText={password.error}
-        secureTextEntry ={true}
+        secureTextEntry={true}
         autoCapitalize="none"
         autoCompleteType="password"
         keyboardType="default"

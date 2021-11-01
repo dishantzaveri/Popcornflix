@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -15,20 +15,18 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
 import BottomSheet from 'reanimated-bottom-sheet';
-import Animated, { Value } from 'react-native-reanimated';
+import Animated, {Value} from 'react-native-reanimated';
 
 import ImagePicker from 'react-native-image-crop-picker';
 import {AuthContext} from '../navigation/AuthProvider.android.js';
 
-
-const Profile = ({navigation,route}) => {
+const Profile = ({navigation, route}) => {
   const [image, setImage] = useState(
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUncw5PB5syw9BIoymTrwyOjAqRlTZC1Rkew&usqp=CAU',
   );
   const {colors} = useTheme();
   const {user, logout} = useContext(AuthContext);
-  const email=route.params.text
-  
+  const email = route.params.text;
 
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
@@ -147,7 +145,7 @@ const Profile = ({navigation,route}) => {
             </View>
           </TouchableOpacity>
           <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
-          Welcome {email}
+            Welcome {email}
           </Text>
         </View>
 
@@ -206,7 +204,6 @@ const Profile = ({navigation,route}) => {
               {
                 color: colors.text,
               },
-             
             ]}
           />
         </View>
