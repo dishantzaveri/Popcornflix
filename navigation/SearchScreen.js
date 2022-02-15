@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { Card } from 'react-native-paper';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
 import Loading from '../components/Loading';
 import {fetchMovies} from "../fetching/fetchCredits";
 
@@ -20,7 +19,6 @@ const screen = Dimensions.get('screen');
 const HomeScreen = ({ navigation }) => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [searchNow, setSearchNow] = useState(false);
 
