@@ -150,7 +150,7 @@ const Profile = ({navigation, route}) => {
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="user-o" color={colors.text} size={30} />
           <TextInput
             placeholder="First Name"
             placeholderTextColor="#666666"
@@ -164,7 +164,7 @@ const Profile = ({navigation, route}) => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="user-o" color={colors.text} size={30} />
           <TextInput
             placeholder="Last Name"
             placeholderTextColor="#666666"
@@ -178,7 +178,7 @@ const Profile = ({navigation, route}) => {
           />
         </View>
         <View style={styles.action}>
-          <Feather name="phone" color={colors.text} size={20} />
+          <Feather name="phone" color={colors.text} size={30} />
           <TextInput
             placeholder="Phone"
             placeholderTextColor="#666666"
@@ -193,9 +193,10 @@ const Profile = ({navigation, route}) => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="envelope-o" color={colors.text} size={20} />
+          <FontAwesome name="envelope-o" color={colors.text} size={30} />
           <TextInput
             placeholder="Email"
+            value={email}
             placeholderTextColor="#666666"
             keyboardType="email-address"
             autoCorrect={false}
@@ -310,6 +311,8 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'android' ? 0 : -12,
     paddingLeft: 10,
     color: '#05375a',
+    fontSize: 20,
+
   },
   button: {
     backgroundColor: '#0782F9',

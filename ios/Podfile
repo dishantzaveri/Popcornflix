@@ -17,6 +17,8 @@ target 'Task1LP' do
   pod 'react-native-viewpager', :path => '../node_modules/@react-native-community/viewpager'
 
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'Task1LPTests' do
     inherit! :complete
     # Pods for testing
