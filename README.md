@@ -1,5 +1,3 @@
-<img src="https://github.com/dishantzaveri/Popcornflix/blob/master/assets/13.jpeg" height="2000" width="1000"/>
-
 # POPCORNFLIX
 
 Popcornflix is a free movie app that simplifies streaming the site's movies on your phone or tablet. Like the desktop site, you can look through the movie and series collections, search by keywords, and browse by genre.  
